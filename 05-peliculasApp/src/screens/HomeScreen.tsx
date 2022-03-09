@@ -1,19 +1,20 @@
 import React from 'react'
-import { ActivityIndicator,  Dimensions,  View } from 'react-native'
+import { ActivityIndicator, Dimensions, FlatList, ScrollView, Text, View } from 'react-native'
 import Carousel from 'react-native-snap-carousel';
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { MoviePoster } from '../components/MoviePoster'
 import { useMovies } from '../hooks/useMovies'
+import { HorizontalSlider } from '../components/HorizontalSlider';
 
-const { width:windowWidth } = Dimensions.get('window')
+const { width: windowWidth } = Dimensions.get('window')
 
 export const HomeScreen = () => {
 
-    const { peliculasEnCine,isLoading } = useMovies()
-    const {top} = useSafeAreaInsets();
+    const { topRated,popular,nowPlaying,upcoming, isLoading } = useMovies()
+    const { top } = useSafeAreaInsets();
 
-    if(isLoading){
-        return(
+    if (isLoading) {
+        return (
             <View style={{
                 flex: 1,
                 alignItems: 'center',
@@ -27,16 +28,30 @@ export const HomeScreen = () => {
         )
     }
     return (
-        <View style={{
-            marginTop: top+20,
-        }}>
-            {/* <MoviePoster movie={peliculasEnCine[12]}/> */}
-            <Carousel
-            data={peliculasEnCine}
-            renderItem={({item}) => <MoviePoster movie={item} />}
-            itemWidth={200}
-            sliderWidth={windowWidth}
-            />
-        </View>
+        <ScrollView>
+            <View style={{
+                marginTop: top + 20,
+            }}>
+                {/* Carrousel Principal */}
+                <View style={{
+                    height: 370,
+                }}>
+                    <Carousel
+                        data={nowPlaying}
+                        renderItem={({ item }) => <MoviePoster movie={item} />}
+                        itemWidth={200}
+                        sliderWidth={windowWidth}
+                        inactiveSlideOpacity={0.9}
+                    />
+                </View>
+                {/* Carrousel Populares */}
+               <HorizontalSlider title='Top Rated' movies={topRated}/>
+               <HorizontalSlider title='Popular' movies={popular}/>
+               <HorizontalSlider title='Upcoming' movies={upcoming}/>
+
+
+            </View>
+        </ScrollView>
+
     )
 }
