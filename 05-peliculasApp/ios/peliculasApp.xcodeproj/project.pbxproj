@@ -39,6 +39,7 @@
 		1D0AE47A65C8663E3B452821 /* Pods-peliculasApp-peliculasAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-peliculasApp-peliculasAppTests.release.xcconfig"; path = "Target Support Files/Pods-peliculasApp-peliculasAppTests/Pods-peliculasApp-peliculasAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-peliculasApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-peliculasApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-peliculasApp-peliculasAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-peliculasApp-peliculasAppTests.debug.xcconfig"; path = "Target Support Files/Pods-peliculasApp-peliculasAppTests/Pods-peliculasApp-peliculasAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7F27B75E27D97A5E002D7E47 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = peliculasApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-peliculasApp-peliculasAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-peliculasApp-peliculasAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A881CF5CF3F2B244570E2A /* Pods-peliculasApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-peliculasApp.debug.xcconfig"; path = "Target Support Files/Pods-peliculasApp/Pods-peliculasApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +107,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7F27B75D27D979C6002D7E47 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7F27B75E27D97A5E002D7E47 /* Ionicons.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +125,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				7F27B75D27D979C6002D7E47 /* Fonts */,
 				13B07FAE1A68108700A75B9A /* peliculasApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* peliculasAppTests */,
@@ -145,7 +155,6 @@
 				6C97AB639B58BBB4B15BBE30 /* Pods-peliculasApp-peliculasAppTests.debug.xcconfig */,
 				1D0AE47A65C8663E3B452821 /* Pods-peliculasApp-peliculasAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
