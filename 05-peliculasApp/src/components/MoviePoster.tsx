@@ -17,7 +17,7 @@ export const MoviePoster = ({ movie, height = 350, width = 200 }: Props) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate('DetailScreen', { movie })
+        navigation.navigate('DetailScreen',  movie )
       }}
       activeOpacity={0.8}
       style={{

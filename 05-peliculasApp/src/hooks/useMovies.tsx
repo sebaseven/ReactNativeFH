@@ -30,7 +30,7 @@ export const useMovies = () => {
 
 
         const response = await Promise.all([nowPlayingPromise, popularPromise, topRatedPromise, upcomingPromise]);
-
+        //console.log(response,'respuesta');
         setMoviesState({
             nowPlaying: response[0].data.results,
             upcoming: response[3].data.results,

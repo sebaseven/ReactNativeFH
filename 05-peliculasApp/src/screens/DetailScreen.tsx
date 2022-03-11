@@ -1,9 +1,11 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { Text, View, StyleSheet, Image, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, Image, Dimensions, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { RootStackParamList } from '../navigator/Navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useMovieDetalis } from '../hooks/useMovieDetalis';
+import { MovieDetails } from '../components/MovieDetails';
 interface Props extends StackScreenProps<RootStackParamList, 'DetailScreen'> {
 
 }
@@ -14,32 +16,50 @@ export const DetailScreen = ({ route, navigation }: Props) => {
   //const movie = route.params as Movie;
   const movie = route.params;
 
-  //console.log(movie);
-  const uri = `https://image.tmdb.org/t/p/w500${movie.movie.poster_path}`;
+  const { isLoading, cast, movieFull } = useMovieDetalis(movie.id);
+
+  const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
   return (
     <ScrollView>
       <View style={styles.imageContainer}>
         <View style={styles.imageBorder}>
-        <Image
-          source={{ uri }}
-          style={styles.posterImage}
+          <Image
+            source={{ uri }}
+            style={styles.posterImage}
+
+          />
+        </View>
+
+      </View>
+      <View style={styles.marginContainer}>
+        <Text style={styles.title}>{movie.title}</Text>
+        <Text style={styles.subTitle}>{movie.original_title}</Text>
+      </View>
+
+      {/* <Icon
+          name="star-outline"
+          size={20}
+          color="grey"
+        /> */}
+      {
+        isLoading ?
+          <ActivityIndicator size={35} color="grey" style={{
+            marginTop: 10
+          }} /> :
+          <MovieDetails movieFull={movieFull!} cast={cast} />
+      }
+      {/* Boton para cerrar */}
+      <TouchableOpacity style={styles.backButton}>
+        <Icon
+          onPress={() => navigation.goBack()}
+          name='arrow-back-outline'
+          color={'white'}
+          size={60}
 
         />
-        </View>
-  
-      </View>
-      <View style={styles.marginContainer}>
-        <Text style={styles.title}>{movie.movie.title}</Text>
-        <Text style={styles.subTitle}>{movie.movie.original_title}</Text>
-      </View>
-      <View style={styles.marginContainer}>
-      <Icon
-      name="star-outline"
-      size={20}
-      color="grey"
-      />
-      </View>
+      </TouchableOpacity>
+
     </ScrollView>
 
   )
@@ -47,6 +67,15 @@ export const DetailScreen = ({ route, navigation }: Props) => {
 const styles = StyleSheet.create({
   posterImage: {
     flex: 1,
+  },
+  backButton: {
+    position: 'absolute',
+    // para ios
+    zIndex: 999,
+    // para android
+    elevation: 9,
+    top: 30,
+    left: 5,
   },
   imageContainer: {
     height: screenHeight * 0.7,
@@ -63,7 +92,7 @@ const styles = StyleSheet.create({
     elevation: 12,
     borderBottomEndRadius: 25,
     borderBottomStartRadius: 25,
- 
+
 
   },
   marginContainer: {
